@@ -33,7 +33,6 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/eslint-module'
   ],
   /*
   ** Build configuration
@@ -44,5 +43,8 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  server: {
+    host: '0.0.0.0',
+  },
 }
