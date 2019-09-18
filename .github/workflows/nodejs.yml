@@ -20,6 +20,13 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        npm run build --if-present
+        npm run build
       env:
         CI: true
+    - name: Dokku deploy
+      uses: vitalyliber/dokku-github-action@master
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+        HOST: dokku.stevie.top
+        PROJECT: nuxt
