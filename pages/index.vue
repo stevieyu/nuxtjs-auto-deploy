@@ -20,6 +20,7 @@
           class="button--grey"
         >GitHub</a>
       </div>
+      <div>test</div>
     </div>
   </div>
 </template>
