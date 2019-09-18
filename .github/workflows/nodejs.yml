@@ -1,28 +1,17 @@
-name: Node CI
+name: deploy dokku
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
+  deploy:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run build
-      env:
-        CI: true
     - name: Dokku deploy
       uses: vitalyliber/dokku-github-action@master
       env:
