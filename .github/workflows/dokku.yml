@@ -19,3 +19,4 @@ jobs:
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
         HOST: dokku.stevie.top
         PROJECT: nuxt
+        BRANCH: master
