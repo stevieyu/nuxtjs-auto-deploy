@@ -1,4 +1,4 @@
-name: Deploy Dokku
+name: surge Dokku
 
 on:
   push:
@@ -20,10 +20,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
       run: |
         npm install
         npm run generate
-    - name: Dokku deploy
+    - name: surge deploy
       uses: dswistowski/surge-sh-action@v1
       with:
         domain: 'nuxt.surge.stevie.top'
