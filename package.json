@@ -13,5 +13,8 @@
   "dependencies": {
     "nuxt-edge": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": "12.x"
+  }
 }
