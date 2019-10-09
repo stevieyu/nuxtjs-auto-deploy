@@ -15,6 +15,6 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": "12.11"
+    "node": "12.x"
   }
 }
