@@ -23,6 +23,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/main.scss',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -32,7 +33,7 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
+  buildModules: [
   ],
   /*
   ** Build configuration
@@ -42,7 +43,14 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+    },
+    extractCSS: true,
+    optimizeCSS: true,
+    postcss: {
+      plugins: {
+        'tailwindcss': './tailwind.config.js',
+      },
+    },
   },
   server: {
     host: '0.0.0.0',
