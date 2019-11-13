@@ -13,10 +13,10 @@
     <div class="flex justify-around text-center -mx-4">
       <div class="item w-full mx-4 relative" v-for="(i, k) in menus" :key="k" :class="{on: idx === k}"
            @mouseenter="itemMouseenter(k)" @mouseleave="itemMouseleave(k)">
-        <nuxt-link class="trigger block py-3 bg-blue-200 w-full" :to="i.to" @click.native="itemClick(k)">
+        <nuxt-link class="trigger block py-3 bg-blue-200 w-full" :to="i.to" @click.native.stop="itemClick(k)">
           {{ i.name }}
         </nuxt-link>
-        <div class="child absolute left-0 w-full bg-yellow-200 opacity-75">
+        <div class="child absolute left-0 w-full bg-yellow-200 opacity-75" v-click-outside="childClick">
           <nuxt-link class="py-4 w-full block" v-for="(ii, kk) in i.child" :to="ii.to" :key="kk" @click.native="childClick">
             {{ ii.name }}
           </nuxt-link>
@@ -28,9 +28,13 @@
 
 <script>
 import throttle from 'lodash/throttle'
+import {directive as ClickOutside} from 'v-click-outside'
 // import debounce from 'lodash/debounce'
 
 export default {
+  directives:{
+    ClickOutside
+  },
   data(){
     return {
       menus: [
@@ -78,6 +82,7 @@ export default {
       this.itemSwitch(idx)
     },
     childClick(){
+      if(this.idx < 0) return;
       console.log('childClick')
       this.idx = -1;
     },
