@@ -10,6 +10,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     npm config set sass-binary-site https://npm.taobao.org/mirrors/node-sass && \
     npm config set loglevel=http && \
     npm install && \
+    npm prune --production && \
     npm cache clean -f && \
     apk del .build-deps
 
