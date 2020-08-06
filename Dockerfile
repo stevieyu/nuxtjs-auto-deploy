@@ -5,10 +5,8 @@ WORKDIR /app
 COPY package.json package.json
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
-    apk add --no-cache --virtual .build-deps git && \
-    npm config set registry https://registry.npm.taobao.org && \
-    npm config set sass-binary-site https://npm.taobao.org/mirrors/node-sass && \
-    npm config set loglevel=http && \
+    apk add --no-cache --virtual .build-deps git curl && \
+    curl -k -o ~/.npmrc https://cdn.jsdelivr.net/gh/stevieyu/stevieyu.github.io/.npmrc && \
     npm install && \
     npm prune --production && \
     npm cache clean -f && \
